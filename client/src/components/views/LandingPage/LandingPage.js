@@ -1,63 +1,86 @@
-import React, { useEffect, useState } from 'react'
-import { Card, Avatar, Col, Typography, Row } from 'antd';
-import moment from 'moment';
-import Axios from 'axios';
+import React from 'react';
+import { Table } from 'antd';
+import logo from './Mtest.png';
 
-const { Title } = Typography;
-const { Meta } = Card;
+function LandingPage() {
 
-function LandingPage(props) {
+    const renderContent = (value, row, index) => {
+        const obj = {
+            children: value,
+            props: {},
+        };
+        return obj;
+    };
 
-    const [Videos, setVideos] = useState([])
+    const columns = [
+        {
+            title: '사고력(무료)',
+            dataIndex: 'first',
+            render: renderContent,
+        },
+        {
+            title: '연산',
+            dataIndex: 'second',
+            render: renderContent,
+        },
+        {
+            title: '교과',
+            dataIndex: 'third',
+            render: renderContent,
+        },
+        {
+            title: '경시/심화',
+            dataIndex: 'fourth',
+            render: renderContent,
+        },
+    ];
 
-    useEffect(() => {
-        Axios.get('/api/video/getVideos')
-            .then(response => {
-                if (response.data.success) {
-                    console.log(response.data.videos);
-                    setVideos(response.data.videos)
-                } else {
-                    alert('비디오 가져오기를 실패했습니다.')
-                }
-            })
-    }, []) //useEffect 뒤에 []는 이 함수가 한번만 사용됨을 의미한다
-
-    const renderCards = Videos.map((video, index) => {
-        var minutes = Math.floor(video.duration / 60);
-        var seconds = Math.floor(video.duration - minutes * 60);
-
-        return (
-            <Col lg={6} md={8} xs={24} key={index}> {/*컬럼의 크기: 가장 클때 6, 중간 8, 가장 작을때 24*/}
-                <a href={`/video/${video._id}`}>
-                    <div style={{ position: 'relative' }}>
-                        <img style={{ width: '100%' }} src={`http://localhost:5000/${video.thumbnail}`} alt="thumbnail" />
-                        <div className="duration">
-                            <span>{minutes} : {seconds}</span>
-                        </div>
-                    </div>
-                </a>
-                <br />
-                <Meta
-                    avatar={
-                        <Avatar src={video.writer.image} />
-                    }
-                    title={video.title}
-                    description=""
-                />
-                <span>{video.writer.name}</span><br />
-                <span style={{ marginLeft: '3rem' }}>{video.views} views</span> - <span>{moment(video.createdAt).format("MMM Do YY")}</span>
-            </Col>
-        )
-    })
-
+    const data = [
+        {
+            key: '1',
+            first: '초등 A',
+            second: '1~6 단계',
+            third: '1~6 단계',
+            fourth: '초등 하'
+        },
+        {
+            key: '2',
+            first: '초등 B',
+            second: '7~12 단계',
+            third: '7~12 단계',
+            fourth: '초등 중'
+        },
+        {
+            key: '3',
+            second: '13~18 단계',
+            third: '13~18 단계',
+            fourth: '초등 상'
+        },
+        {
+            key: '4',
+            second: '19~24 단계',
+            third: '19~24 단계',
+            fourth: '중등 1'
+        },
+        {
+            key: '5',
+            second: '25~30 단계',
+            third: '25~30 단계',
+            fourth: '중등 2'
+        },
+        {
+            key: '6',
+            third: '31~36 단계',
+            fourth: '중등 3'
+        },
+    ];
     return (
-        <div style={{ width: '85%', margin: '3rem auto' }}>
-            <Title level={2}>Recommended </Title>
-            <hr />
-            <Row gutter={[32, 16]}>
-                {renderCards}
-
-            </Row>
+        <div style={{textAlign:"center"}}>
+            <img
+                src={logo}
+                alt="Canvas Logo"
+            />
+        <Table columns={columns} dataSource={data} bordered />
         </div>
     )
 }
