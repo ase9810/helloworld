@@ -9,6 +9,7 @@ import {
   Form,
   Input,
   Button,
+  Radio
 } from 'antd';
 
 const formItemLayout = {
@@ -44,7 +45,10 @@ function RegisterPage(props) {
         lastName: '',
         name: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        phone: '',
+        birthday: '',
+        gender: ''
       }}
       validationSchema={Yup.object().shape({
         name: Yup.string()
@@ -59,7 +63,13 @@ function RegisterPage(props) {
           .required('Password is required'),
         confirmPassword: Yup.string()
           .oneOf([Yup.ref('password'), null], 'Passwords must match')
-          .required('Confirm Password is required')
+          .required('Confirm Password is required'),
+        phone: Yup.string()
+          .required('Phone is required'),
+        birthday: Yup.string()
+          .required('Birthday is required'),
+        gender: Yup.string()
+          .required('Gender is required'),
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
@@ -69,6 +79,9 @@ function RegisterPage(props) {
             password: values.password,
             name: values.name,
             lastname: values.lastname,
+            phone: values.phone,
+            birthday: values.birthday,
+            gender: values.gender,
             image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`
           };
 
@@ -182,6 +195,56 @@ function RegisterPage(props) {
                 {errors.confirmPassword && touched.confirmPassword && (
                   <div className="input-feedback">{errors.confirmPassword}</div>
                 )}
+              </Form.Item>
+
+              <Form.Item required label="Phone">
+                <Input
+                  id="phone"
+                  placeholder="Enter your Phone"
+                  type="phone"
+                  value={values.phone}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={
+                    errors.phone && touched.phone ? 'text-input error' : 'text-input'
+                  }
+                />
+                {errors.phone && touched.phone && (
+                  <div className="input-feedback">{errors.phone}</div>
+                )}
+              </Form.Item>
+
+              <Form.Item required label="Birthday">
+                <Input
+                  id="birthday"
+                  placeholder="Enter your Birthday"
+                  type="date"
+                  value={values.birthday}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={
+                    errors.birthday && touched.birthday ? 'text-input error' : 'text-input'
+                  }
+                />
+                {errors.birthday && touched.birthday && (
+                  <div className="input-feedback">{errors.birthday}</div>
+                )}
+              </Form.Item>
+
+              <Form.Item required label="Gender">
+                <Radio.Group
+                  id="gender" 
+                  name="gender"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.gender}
+                  className={
+                    errors.gender && touched.gender ? 'text-input error' : 'text-input'
+                  }
+                >
+                  <Radio value={"MALE"}>MALE</Radio>
+                  <Radio value={"FEMALE"}>FEMALE</Radio>
+                </Radio.Group>
               </Form.Item>
 
               <Form.Item {...tailFormItemLayout}>

@@ -22,6 +22,15 @@ const userSchema = mongoose.Schema({
         type:String,
         maxlength: 50
     },
+    phone: {
+        type:String
+    },
+    birthday: {
+        type:String
+    },
+    gender: {
+        type:String
+    },
     role : {
         type:Number,
         default: 0 
