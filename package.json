@@ -16,6 +16,9 @@
   "author": "John ahn",
   "license": "ISC",
   "dependencies": {
+    "@ant-design/colors": "^4.0.0",
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.3",
@@ -31,6 +34,8 @@
     "multiparty": "^4.2.1",
     "node-pre-gyp": "^0.15.0",
     "react-dropzone": "^11.0.1",
+    "react-emotion": "^10.0.0",
+    "react-mathjax2": "0.0.2",
     "react-redux": "^5.0.7",
     "saslprep": "^1.0.3",
     "supports-color": "^7.1.0",

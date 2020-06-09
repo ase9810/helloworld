@@ -1,0 +1,41 @@
+thead[class="ant-table-thead"] th[class="first"]{
+    background-color: orange;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+thead[class="ant-table-thead"] th[class="second"]{
+    background-color: deepskyblue;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+thead[class="ant-table-thead"] th[class="third"]{
+    background-color: limegreen;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+thead[class="ant-table-thead"] th[class="fourth ant-table-row-cell-last"]{
+    background-color: crimson;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.time-table-row-select > .ant-spin-nested-loading > .ant-spin-container > div > .ant-table-content > .ant-table-body > table > tbody > tr:hover > td {
+    background-color: unset;
+}
+
+.time-table-row-select > .ant-spin-nested-loading > .ant-spin-container > div > .ant-table-content > .ant-table-body > table > tbody > tr > td[class="first"]:hover {
+    background-color: rgb(253, 221, 161);
+}
+.time-table-row-select > .ant-spin-nested-loading > .ant-spin-container > div > .ant-table-content > .ant-table-body > table > tbody > tr > td[class="second"]:hover {
+    background-color: rgb(152, 228, 253);
+}
+.time-table-row-select > .ant-spin-nested-loading > .ant-spin-container > div > .ant-table-content > .ant-table-body > table > tbody > tr > td[class="third"]:hover {
+    background-color: rgb(149, 245, 149);
+}
+.time-table-row-select > .ant-spin-nested-loading > .ant-spin-container > div > .ant-table-content > .ant-table-body > table > tbody > tr > td[class="fourth"]:hover {
+    background-color: rgb(241, 147, 166);
+}
