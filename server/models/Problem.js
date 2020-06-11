@@ -1,27 +1,37 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const problemSchema = mongoose.Schema({
-    Question: {
+const {Schema} = mongoose;
+
+const problemSchema = new Schema({
+    testid: {
         type: String
     },
-    Answer: {
+    number: {
         type: String
     },
-    Mark1: {
+    question: {
         type: String
     },
-    Mark2: {
+    answer: {
         type: String
     },
-    Mark3: {
+    mark1: {
         type: String
     },
-    Mark4: {
+    mark2: {
+        type: String
+    },
+    mark3: {
+        type: String
+    },
+    mark4: {
+        type: String
+    },
+    mark5: {
         type: String
     }
 
-}, { timestamps: true })
+})
 
 
 const Problem = mongoose.model('Problem', problemSchema);

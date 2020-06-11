@@ -47,9 +47,9 @@ function LandingPage(props) {
             key: '1',
             first: '초등 A',
             second:
-                <Menu mode='vertical'>
+                <Menu mode='horizontal'>
                     <SubMenu title={<span>1~6 단계</span>}>
-                        <Menu.Item>1단계</Menu.Item>
+                        <Menu.Item><a href={`/problem?testid=a1`}>1단계</a></Menu.Item>
                         <Menu.Item>2단계</Menu.Item>
                         <Menu.Item>3단계</Menu.Item>
                         <Menu.Item>4단계</Menu.Item>
@@ -59,10 +59,10 @@ function LandingPage(props) {
                 </Menu>
             ,
             third:
-                <Menu mode='vertical'>
+                <Menu mode='horizontal'>
                     <SubMenu title={<span>1~6 단계</span>}>
                         <Menu.Item>1단계</Menu.Item>
-                        <Menu.Item>2단계</Menu.Item>
+                        <Menu.Item><a href={`/problem/testid=d2`}>2단계</a></Menu.Item>
                         <Menu.Item>3단계</Menu.Item>
                         <Menu.Item>4단계</Menu.Item>
                         <Menu.Item>5단계</Menu.Item>
@@ -76,7 +76,7 @@ function LandingPage(props) {
             key: '2',
             first: '초등 B',
             second:
-                <Menu mode='vertical'>
+                <Menu mode='horizontal'>
                     <SubMenu title={<span>7~12 단계</span>}>
                         <Menu.Item>7단계</Menu.Item>
                         <Menu.Item>8단계</Menu.Item>
@@ -88,7 +88,7 @@ function LandingPage(props) {
                 </Menu>
             ,
             third:
-                <Menu mode='vertical'>
+                <Menu mode='horizontal'>
                     <SubMenu title={<span>7~12 단계</span>}>
                         <Menu.Item>7단계</Menu.Item>
                         <Menu.Item>8단계</Menu.Item>
@@ -104,7 +104,7 @@ function LandingPage(props) {
         {
             key: '3',
             second:
-                <Menu mode='vertical'>
+                <Menu mode='horizontal'>
                     <SubMenu title={<span>13~18 단계</span>}>
                         <Menu.Item>13단계</Menu.Item>
                         <Menu.Item>14단계</Menu.Item>
@@ -116,7 +116,7 @@ function LandingPage(props) {
                 </Menu>
             ,
             third:
-                <Menu mode='vertical'>
+                <Menu mode='horizontal'>
                     <SubMenu title={<span>13~18 단계</span>}>
                         <Menu.Item>13단계</Menu.Item>
                         <Menu.Item>14단계</Menu.Item>
@@ -132,7 +132,7 @@ function LandingPage(props) {
         {
             key: '4',
             second:
-                <Menu mode='vertical'>
+                <Menu mode='horizontal'>
                     <SubMenu title={<span>19~24 단계</span>}>
                         <Menu.Item>19단계</Menu.Item>
                         <Menu.Item>20단계</Menu.Item>
@@ -144,7 +144,7 @@ function LandingPage(props) {
                 </Menu>
             ,
             third:
-                <Menu mode='vertical'>
+                <Menu mode='horizontal'>
                     <SubMenu title={<span>19~24 단계</span>}>
                         <Menu.Item>19단계</Menu.Item>
                         <Menu.Item>20단계</Menu.Item>
@@ -160,7 +160,7 @@ function LandingPage(props) {
         {
             key: '5',
             second:
-                <Menu mode='vertical'>
+                <Menu mode='horizontal'>
                     <SubMenu title={<span>25~30 단계</span>}>
                         <Menu.Item>25단계</Menu.Item>
                         <Menu.Item>26단계</Menu.Item>
@@ -172,7 +172,7 @@ function LandingPage(props) {
                 </Menu>
             ,
             third:
-                <Menu mode='vertical'>
+                <Menu mode='horizontal'>
                     <SubMenu title={<span>25~30 단계</span>}>
                         <Menu.Item>25단계</Menu.Item>
                         <Menu.Item>26단계</Menu.Item>
@@ -188,7 +188,7 @@ function LandingPage(props) {
         {
             key: '6',
             third:
-                <Menu mode='vertical'>
+                <Menu mode='horizontal'>
                     <SubMenu title={<span>31~36 단계</span>}>
                         <Menu.Item>31단계</Menu.Item>
                         <Menu.Item>32단계</Menu.Item>
