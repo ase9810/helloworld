@@ -1,11 +1,14 @@
 import React from 'react';
 import { Table, Menu } from 'antd';
 import logo from './Mtest.png';
-import "./LandingPage.css"
+import "./LandingPage.css";
 
 const SubMenu = Menu.SubMenu;
 
 function LandingPage(props) {
+
+    var url = '/problem?testid=';
+    var testid;
 
     const renderContent = (value, row, index) => {
         const obj = {
@@ -49,7 +52,7 @@ function LandingPage(props) {
             second:
                 <Menu mode='horizontal'>
                     <SubMenu title={<span>1~6 단계</span>}>
-                        <Menu.Item><a href={`/problem?testid=a1`}>1단계</a></Menu.Item>
+                        <Menu.Item><a href='/problem/a1'>1단계</a></Menu.Item>
                         <Menu.Item>2단계</Menu.Item>
                         <Menu.Item>3단계</Menu.Item>
                         <Menu.Item>4단계</Menu.Item>
@@ -62,7 +65,7 @@ function LandingPage(props) {
                 <Menu mode='horizontal'>
                     <SubMenu title={<span>1~6 단계</span>}>
                         <Menu.Item>1단계</Menu.Item>
-                        <Menu.Item><a href={`/problem/testid=d2`}>2단계</a></Menu.Item>
+                        <Menu.Item><a href='/problem/d2'>2단계</a></Menu.Item>
                         <Menu.Item>3단계</Menu.Item>
                         <Menu.Item>4단계</Menu.Item>
                         <Menu.Item>5단계</Menu.Item>

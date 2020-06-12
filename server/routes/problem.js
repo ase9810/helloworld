@@ -24,10 +24,11 @@ router.post("/saveProblem", (req, res) => {
 });
 
 router.get('/getProblem', function (req, res) {
-    var query = req.query;
-
+    const value = req.rawHeaders.slice(7,8).toString()
+    const testid = value.substring(30,32)
+    
     // 문제를 DB에서 가져와서 클라이언트에 보낸다.
-    Problem.find({testid:query})
+    Problem.find({testid:testid})
         .then((problem) => {
             if (problem.length != 0) {
                 res.status(200).json({
@@ -35,7 +36,7 @@ router.get('/getProblem', function (req, res) {
                     problem
                 })
             } else {
-                console.log(query);
+                console.log(testid)
                 res.status(200).json({
                     success: false
                 })
