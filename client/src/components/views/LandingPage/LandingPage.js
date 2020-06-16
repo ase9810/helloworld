@@ -7,9 +7,6 @@ const SubMenu = Menu.SubMenu;
 
 function LandingPage(props) {
 
-    var url = '/problem?testid=';
-    var testid;
-
     const renderContent = (value, row, index) => {
         const obj = {
             children: value,

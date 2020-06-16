@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import MathJax from 'react-mathjax2'
 import Axios from 'axios';
-import { Row, Col, Steps, message, Button } from 'antd';
+import { Steps, Row, Col, message, Button } from 'antd';
 import './style.css';
 
 //const abc = "안녕"
@@ -13,7 +13,7 @@ function ProblemPage() {
 
     const [Problem, setProblem] = useState([]);
 
-    const [state, setState] = useState({current:0});
+    const [state, setstate] = useState({ current: 0 })
 
     useEffect(() => {
         Axios.get('/api/problem/getProblem')
@@ -27,9 +27,9 @@ function ProblemPage() {
             })
     }, [])
 
+    
     const renderCard = Problem.map((problem, index) => {
         let arr = [];
-
         for (var i = 0; i < 5; i++) {
             var rand = Math.floor(Math.random() * 5);
             switch (rand) {
@@ -57,30 +57,30 @@ function ProblemPage() {
             }
         }
 
-
         return (
             <Row gutter={[16, 16]} key={index}>
-                <Col lg={18} xs={24}>
-                    <div className='grid'>
-                        <MathJax.Context
-                            input='ascii'
-                            onLoad={() => console.log("Loaded MathJax script!")}
-                            onError={(MathJax, error) => {
-                                console.warn(error);
-                                console.log("Encountered a MathJax error, re-attempting a typeset!");
-                                MathJax.Hub.Queue(
-                                    MathJax.Hub.Typeset()
-                                );
-                            }}
-                            script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=AM_HTMLorMML"
-                            options={{
-                                asciimath2jax: {
-                                    useMathMLspacing: true,
-                                    delimiters: [["$$", "$$"]],
-                                    preview: "none",
-                                }
-                            }}
-                        >
+                <Col lg={18} xs={24} style={{ display: "contents" }}>
+                    <MathJax.Context
+                        input='ascii'
+                        onLoad={() => console.log("Loaded MathJax script!")}
+                        onError={(MathJax, error) => {
+                            console.warn(error);
+                            console.log("Encountered a MathJax error, re-attempting a typeset!");
+                            MathJax.Hub.Queue(
+                                MathJax.Hub.Typeset()
+                            );
+                        }}
+                        script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=AM_HTMLorMML"
+                        options={{
+                            asciimath2jax: {
+                                useMathMLspacing: true,
+                                delimiters: [["$$", "$$"]],
+                                preview: "none",
+                            }
+                        }}
+                    >
+                        <div className='grid'>
+
                             <div id='quiz'>
                                 <div id='question'>
                                     {/* <MathJax.Text text={content} /> */}
@@ -88,88 +88,80 @@ function ProblemPage() {
                                 </div>
                             </div>
 
-                        </MathJax.Context>
-                        <div className="buttons">
-                            <button className="btn">① {arr[0]}</button>
-                            <button className="btn">② {arr[1]}</button>
-                            <button className="btn">③ {arr[2]}</button>
-                            <button className="btn">④ {arr[3]}</button>
-                            <button className="btn">⑤ {arr[4]}</button>
+                            <div className="buttons">
+                                <button id="btn"><MathJax.Text text={'① ' + arr[0]} /></button>
+                                <button id="btn"><MathJax.Text text={'② ' + arr[1]} /></button>
+                                <button id="btn"><MathJax.Text text={'③ ' + arr[2]} /></button>
+                                <button id="btn"><MathJax.Text text={'④ ' + arr[3]} /></button>
+                                <button id="btn"><MathJax.Text text={'⑤ ' + arr[4]} /></button>
+                            </div>
+
                         </div>
-                    </div>
+                    </MathJax.Context>
                 </Col>
             </Row>
         );
     })
- 
-    const steps = [
-        {
-        title:0,
-        content:[]
-        },
-        {
-        title:0,
-        content:[]
-        }
-    ]
 
-    for(var i=0; i<renderCard.length; i++) {
-        if(i===0 || i===1) {
-            steps[i].title = i;
-            steps[i].content = renderCard.slice(i,i+1);
+    const steps = []
+
+        for (var i = 0; i < renderCard.length; i++) {
+            steps.push({ title: i, content: renderCard.slice(i, i + 1) })
         }
-        else {
-            steps.push({ title:i , content:renderCard.slice(i,i+1)})
-        }
-    }
 
     function next() {
         const current = state.current + 1;
-        setState(current);
-      }
-    
+        setstate({ current });
+    }
+
     function prev() {
         const current = state.current - 1;
-        setState(current);
-      }
-
-    let { current } = state;
-
-    console.log(steps)
+        setstate({ current });
+    }
 
     const onChange = current => {
-        console.log('onChange:', current);
-        setState({ current });
-    };
+        setstate({ current });
+    }
 
-    return (
-        <div>
-        <Steps current={current} onChange={onChange}>
-          {steps.map(item => (
-            <Step key={item.title}/>
-          ))}
-        </Steps>
-        
-        <div className="steps-content">{steps[0].content}</div>
-        <div className="steps-action">
-          {current < steps.length - 1 && (
-            <Button type="primary" onClick={next()}>
-              Next
-            </Button>
-          )}
-          {current === steps.length - 1 && (
-            <Button type="primary" onClick={() => message.success('Processing complete!')}>
-              Done
-            </Button>
-          )}
-          {current > 0 && (
-            <Button style={{ margin: '0 8px' }} onClick={prev()}>
-              Previous
-            </Button>
-          )}
-        </div>
-      </div>
-    )
+    const { current } = state;
+
+    if (steps.length > 2) {
+        return (
+            <div>
+                <Steps current={current} direction='horizontal' onChange={onChange}>
+                    {steps.map(item => (
+                        <Step key={item.title} />
+                    ))}
+                </Steps>
+
+                <div className="steps-content">{steps[current].content}</div>
+                <div className="steps-action">
+                    {current < steps.length - 1 && (
+                        <Button type="primary" onClick={() => next()}>
+                            Next
+                        </Button>
+                    )}
+                    {current === steps.length - 1 && (
+                        <Button type="primary" onClick={() => message.success('Processing complete!')}>
+                            Done
+                        </Button>
+                    )}
+                    {current > 0 && (
+                        <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
+                            Previous
+                        </Button>
+                    )}
+                </div>
+
+            </div>
+        )
+    } else {
+        return (
+            <div>
+                Loading...
+            </div>
+        )
+    }
 }
 
 export default ProblemPage

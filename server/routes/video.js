@@ -65,7 +65,7 @@ router.get('/getVideos', (req, res) => {
         .populate('writer')
         .exec((err, videos) => {
             if(err) return res.status(400).send(err);
-            console.log(videos);
+            // console.log(videos);
             res.status(200).json({ success: true, videos })
         })
 })

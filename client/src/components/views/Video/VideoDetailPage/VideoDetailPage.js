@@ -3,16 +3,17 @@ import { Row, Col, List, Avatar } from 'antd';
 import Axios from 'axios';
 import SideVideo from './Sections/SideVideo';
 import Subscribe from './Sections/Subscribe';
-import Comment from './Sections/Comment';
+import Comment from './Sections/Comments';
 
 function VideoDetailPage(props) {
     const videoId = props.match.params.videoId;
-    
+
     const [VideoDetail, setVideoDetail] = useState([]);
+    const [Comments, setComments] = useState([]);
 
     const videoVariable = { videoId: videoId };
 
-    const [Comments, setComments] = useState("");
+
 
     useEffect(() => {
         Axios.post('/api/video/getVideoDetail', videoVariable)
@@ -23,11 +24,24 @@ function VideoDetailPage(props) {
                     alert('비디오 정보를 가져오기를 실패했습니다.')
                 }
             })
+
+        Axios.post('/api/comment/getComments', videoVariable)
+            .then(response => {
+                if (response.data.success) {
+                    setComments(response.data.comments)
+                } else {
+                    alert('Failed to get video Info')
+                }
+            })
     }, [videoVariable])
+
+    const updateComment = (newComment) => {
+        setComments(Comments.concat(newComment))
+    }
 
     if (VideoDetail.writer) {
 
-        const subscribeButton = VideoDetail.writer._id !== localStorage.getItem('userId') && <Subscribe userTo={VideoDetail.writer._id} userFrom={localStorage.getItem("userId")}/>
+        const subscribeButton = VideoDetail.writer._id !== localStorage.getItem('userId') && <Subscribe userTo={VideoDetail.writer._id} userFrom={localStorage.getItem("userId")} />
         return (
             <Row gutter={[16, 16]}>
                 <Col lg={18} xs={24}>
@@ -36,7 +50,7 @@ function VideoDetailPage(props) {
                         <List.Item
                             actions={[subscribeButton]}
                         >
-                            
+
                             <List.Item.Meta
                                 avatar={<Avatar src={VideoDetail.writer.image} />}
                                 title={VideoDetail.writer.name}
@@ -44,11 +58,11 @@ function VideoDetailPage(props) {
                             />
                         </List.Item>
                         {/* Comments */}
-                        <Comment postId={videoId}/>
+                        <Comment Comments={Comments} postId={VideoDetail._id} refreshFunction={updateComment} />
                     </div>
                 </Col>
                 <Col lg={6} xs={24}>
-                    <SideVideo/>
+                    <SideVideo />
                 </Col>
             </Row>
         )

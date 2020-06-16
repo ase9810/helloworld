@@ -24,7 +24,7 @@ router.post("/saveProblem", (req, res) => {
 });
 
 router.get('/getProblem', function (req, res) {
-    const value = req.rawHeaders.slice(7,8).toString()
+    const value = req.headers.referer.toString()
     const testid = value.substring(30,32)
     
     // 문제를 DB에서 가져와서 클라이언트에 보낸다.
@@ -36,7 +36,7 @@ router.get('/getProblem', function (req, res) {
                     problem
                 })
             } else {
-                console.log(testid)
+                console.log(value)
                 res.status(200).json({
                     success: false
                 })
@@ -47,5 +47,6 @@ router.get('/getProblem', function (req, res) {
         })
 
 });
+
 
 module.exports = router;

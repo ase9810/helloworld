@@ -17,8 +17,15 @@
   "license": "ISC",
   "dependencies": {
     "@ant-design/colors": "^4.0.0",
+    "@ant-design/react-native": "^4.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
+    "@react-native-community/cameraroll": "^1.7.2",
+    "@react-native-community/picker": "^1.6.3",
+    "@react-native-community/segmented-control": "^2.0.0",
+    "@react-native-community/slider": "^3.0.0",
+    "@react-native-community/viewpager": "^4.0.1",
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.3",
@@ -29,19 +36,23 @@
     "http": "0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.26.0",
-    "mongoose": "^5.9.17",
+    "mongoose": "^5.9.18",
     "multer": "^1.4.2",
     "multiparty": "^4.2.1",
     "node-pre-gyp": "^0.15.0",
+    "react": "^16.13.1",
     "react-dropzone": "^11.0.1",
     "react-emotion": "^10.0.0",
     "react-mathjax2": "0.0.2",
-    "react-redux": "^5.0.7",
+    "react-native": "^0.62.2",
+    "react-redux": "^5.1.2",
     "saslprep": "^1.0.3",
     "supports-color": "^7.1.0",
-    "xlsx": "^0.16.2"
+    "xlsx": "^0.16.2",
+    "yarn": "^1.22.4"
   },
   "devDependencies": {
+    "babel-plugin-import": "^1.13.0",
     "concurrently": "^4.1.0",
     "nodemon": "^1.19.1"
   }
