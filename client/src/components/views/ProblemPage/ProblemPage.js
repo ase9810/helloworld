@@ -9,7 +9,7 @@ import './style.css';
 
 const { Step } = Steps;
 
-function ProblemPage() {
+function ProblemPage(props) {
 
     const [Problem, setProblem] = useState([]);
 

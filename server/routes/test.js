@@ -1,20 +1,20 @@
 const express = require('express');
-const {Problem} = require("../models/Problem");
+const {Test} = require("../models/Test");
 
 const router = express.Router();
 
 const { auth } = require("../middleware/auth");
 
 //=================================
-//             Problem
+//             Test
 //=================================
 
 
-router.post("/saveProblem", (req, res) => {
-    const problem = new Problem(req.body);
-    problem.save((err, problem) => {
+router.post("/saveTest", (req, res) => {
+    const test = new Test(req.body);
+    test.save((err, test) => {
         if (err) return res.json({ success: false, err })
-        Problem.find({ '_id': problem._id })
+        Test.find({ '_id': test._id })
             .populate('writer')
             .exec((err, result) => {
                 if (err) return res.json({ success: false, err })
@@ -23,17 +23,17 @@ router.post("/saveProblem", (req, res) => {
     });
 });
 
-router.get('/getProblem', function (req, res) {
+router.get('/getTest', function (req, res) {
     const value = req.headers.referer.toString()
-    const testid = value.substring(30,32)
+    const testid = value.substring(27,29)
     
     // 문제를 DB에서 가져와서 클라이언트에 보낸다.
-    Problem.find({testid:testid})
-        .then((problem) => {
-            if (problem.length != 0) {
+    Test.find({testid:testid})
+        .then((test) => {
+            if (test.length != 0) {
                 res.status(200).json({
                     success: true,
-                    problem
+                    test
                 })
             } else {
                 console.log(value)

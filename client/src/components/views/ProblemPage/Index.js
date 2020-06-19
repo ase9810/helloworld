@@ -1,77 +1,129 @@
-import React, { useState } from "react";
-import "antd/dist/antd.css";
-import "./index.css";
-import { Steps, Button, message } from "antd";
+import React from "react";
+import { quizData } from "./quizData";
+// import './index.css';
 
-const { Step } = Steps;
+class MainQuiz extends React.Component {
+  state = {
+    currentQuestion: 0,
+    myAnswer: null,
+    options: [],
+    score: 0,
+    disabled: true,
+    isEnd: false
+  };
 
+  loadQuizData = () => {
+    // console.log(quizData[0].question)
+    this.setState(() => {
+      return {
+        questions: quizData[this.state.currentQuestion].question,
+        answer: quizData[this.state.currentQuestion].answer,
+        options: quizData[this.state.currentQuestion].options
+      };
+    });
+  };
 
+  componentDidMount() {
+    this.loadQuizData();
+  }
+  nextQuestionHandler = () => {
+    // console.log('test')
+    const { myAnswer, answer, score } = this.state;
 
-function Index() {
-  
-  const [state, setState] = useState({ current: 0 });
-
-  const steps = [
-    {
-      title: "First",
-      content: ["First-content"]
-    },
-    {
-      title: "Second",
-      content: ["Second-content"]
-    },
-    {
-      title: "Last",
-      content: ["Last-content"]
+    if (myAnswer === answer) {
+      this.setState({
+        score: score + 1
+      });
     }
-  ];
 
-  function next() {
-    const current = state.current + 1;
-    setState({current});
-    console.log(state)
+    this.setState({
+      currentQuestion: this.state.currentQuestion + 1
+    });
+    console.log(this.state.currentQuestion);
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.currentQuestion !== prevState.currentQuestion) {
+      this.setState(() => {
+        return {
+          disabled: true,
+          questions: quizData[this.state.currentQuestion].question,
+          options: quizData[this.state.currentQuestion].options,
+          answer: quizData[this.state.currentQuestion].answer
+        };
+      });
+    }
   }
+  //check answer
+  checkAnswer = answer => {
+    this.setState({ myAnswer: answer, disabled: false });
+  };
+  finishHandler = () => {
+    if (this.state.currentQuestion === quizData.length - 1) {
+      this.setState({
+        isEnd: true
+      });
+    }
+    if (this.state.myAnswer === this.state.answer) {
+      this.setState({
+        score: this.state.score + 1
+      });
+    }
+  };
+  render() {
+    const { options, myAnswer, currentQuestion, isEnd } = this.state;
 
-  function prev() {
-    const current = state.current - 1;
-    setState({current});
-    console.log(state)
+    if (isEnd) {
+      return (
+        <div className="result">
+          <h3>Game Over your Final score is {this.state.score} points </h3>
+          <div>
+            The correct answer's for the questions was
+            <ul>
+              {quizData.map((item, index) => (
+                <li className="ui floating message options" key={index}>
+                  {item.answer}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="App">
+          <h1>{this.state.questions} </h1>
+          <span>{`Questions ${currentQuestion+1}  out of ${quizData.length} remaining `}</span>
+          {options.map(option => (
+            <p
+              key={option.id}
+              className={`ui floating message options
+         ${myAnswer === option ? "selected" : null}
+         `}
+              onClick={() => this.checkAnswer(option)}
+            >
+              {option}
+            </p>
+          ))}
+          {currentQuestion < quizData.length - 1 && (
+            <button
+              className="ui inverted button"
+              disabled={this.state.disabled}
+              onClick={this.nextQuestionHandler}
+            >
+              Next
+            </button>
+          )}
+          {/* //adding a finish button */}
+          {currentQuestion === quizData.length - 1 && (
+            <button className="ui inverted button" onClick={this.finishHandler}>
+              Finish
+            </button>
+          )}
+        </div>
+      );
+    }
   }
-
-  const { current } = state;
-  return (
-    <div>
-      <Steps current={current} direction="horizontal" size="small">
-        {steps.map(item => (
-          <Step key={item.title} title={item.title} />
-        ))}
-        {console.log(steps)}
-      </Steps>
-      <div className="steps-content">{steps[current].content}
-      {console.log(steps[current].content)}
-      </div>
-      <div className="steps-action">
-        {current < steps.length - 1 && (
-          <Button type="primary" onClick={() => next()}>
-            Next
-          </Button>
-        )}
-        {current === steps.length - 1 && (
-          <Button
-            type="primary"
-            onClick={() => message.success("Processing complete!")}
-          >
-            Done
-          </Button>
-        )}
-        {current > 0 && (
-          <Button style={{ margin: "0 8px" }} onClick={() => prev()}>
-            Previous
-          </Button>
-        )}
-      </div>
-    </div>
-  );
 }
 
-export default Index;
+export default MainQuiz;

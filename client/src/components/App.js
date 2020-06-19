@@ -12,7 +12,7 @@ import VideoUploadPage from "./views/Video/VideoUploadPage/VideoUploadPage";
 import VideoDetailPage from "./views/Video/VideoDetailPage/VideoDetailPage";
 import SubscriptionPage from "./views/Video/SubscriptionPage/SubscriptionPage";
 import ProblemPage from "./views/ProblemPage/ProblemPage";
-import test from "./views/ProblemPage/Index";
+import TestPage from "./views/TestPage/TestPage";
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
@@ -33,7 +33,8 @@ function App() {
           <Route exact path="/subscription" component={Auth(SubscriptionPage, null)} />
           <Route exact path="/problem" component={Auth(ProblemPage, null)} />
           <Route exact path="/problem/:testid" component={Auth(ProblemPage, null)} />
-          <Route exact path="/test" component={Auth(test, null)} />
+          <Route exact path="/test" component={Auth(TestPage, null)} />
+          <Route exact path="/test/:testid" component={Auth(TestPage, null)} />
         </Switch>
       </div>
       <Footer />
