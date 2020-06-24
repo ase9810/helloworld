@@ -29,6 +29,12 @@ const testSchema = new Schema({
     },
     mark5: {
         type: String
+    },
+    correctcnt: {
+        type: Number
+    },
+    totalcnt: {
+        type: Number
     }
 
 })

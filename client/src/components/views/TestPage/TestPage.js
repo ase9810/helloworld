@@ -21,17 +21,28 @@ function TestPage() {
     const quizData = {
         "questions": Test.map((test) => {
             const quiz = {
+                "_id": test._id,
                 "question": test.question,
                 "questionType": "text",
-                "answerSelectionType": "single",
-                "answers": [
+                "answerSelectionType": test.answer.indexOf(',')>=0 ? "multiple" : "single",
+                "answers": test.mark4 !== undefined ?
+                [
                     test.mark1,
                     test.mark2,
                     test.mark3,
                     test.mark4,
                     test.mark5
-                ],
-                "correctAnswer": test.answer
+                ]
+                :
+                [
+                    test.mark1,
+                    test.mark2,
+                    test.mark3
+                ]
+                ,
+                "correctAnswer": test.answer.indexOf(',')>=0 ? test.answer.split(',') : test.answer, 
+                "correctCount": test.correctcnt != null ? test.correctcnt : 0,
+                "totalCount": test.totalcnt != null ? test.totalcnt : 0
             }
             return quiz
         })
@@ -60,12 +71,9 @@ function TestPage() {
             }}
         >
             <div>
-
-                <Quiz quiz={quizData} shuffle={true} continueTillCorrect={true}/>
-
+                <Quiz quiz={quizData} shuffle={true} lastCheck={true} continueTillCorrect={true}/>
             </div >
         </MathJax.Context>
-
     )
 }
 
