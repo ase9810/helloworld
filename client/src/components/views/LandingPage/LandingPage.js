@@ -48,13 +48,14 @@ function LandingPage(props) {
             first: '초등 A',
             second:
                 <Menu mode='horizontal'>
+                    {/* A, B */}
                     <SubMenu title={<span>1~6 단계</span>}>
                         <Menu.Item><a href='/test/a1'>1단계</a></Menu.Item>
-                        <Menu.Item>2단계</Menu.Item>
-                        <Menu.Item>3단계</Menu.Item>
-                        <Menu.Item>4단계</Menu.Item>
-                        <Menu.Item>5단계</Menu.Item>
-                        <Menu.Item>6단계</Menu.Item>
+                        <Menu.Item><a href='/test/a2'>2단계</a></Menu.Item>
+                        <Menu.Item><a href='/test/a3'>3단계</a></Menu.Item>
+                        <Menu.Item><a href='/test/a4'>4단계</a></Menu.Item>
+                        <Menu.Item><a href='/test/b1'>5단계</a></Menu.Item>
+                        <Menu.Item><a href='/test/b2'>6단계</a></Menu.Item>
                     </SubMenu>
                 </Menu>
             ,
@@ -62,7 +63,7 @@ function LandingPage(props) {
                 <Menu mode='horizontal'>
                     <SubMenu title={<span>1~6 단계</span>}>
                         <Menu.Item>1단계</Menu.Item>
-                        <Menu.Item><a href='/test/d2'>2단계</a></Menu.Item>
+                        <Menu.Item>2단계</Menu.Item>
                         <Menu.Item>3단계</Menu.Item>
                         <Menu.Item>4단계</Menu.Item>
                         <Menu.Item>5단계</Menu.Item>
@@ -77,13 +78,14 @@ function LandingPage(props) {
             first: '초등 B',
             second:
                 <Menu mode='horizontal'>
+                    {/* B, C */}
                     <SubMenu title={<span>7~12 단계</span>}>
-                        <Menu.Item>7단계</Menu.Item>
-                        <Menu.Item>8단계</Menu.Item>
-                        <Menu.Item>9단계</Menu.Item>
-                        <Menu.Item>10단계</Menu.Item>
-                        <Menu.Item>11단계</Menu.Item>
-                        <Menu.Item>12단계</Menu.Item>
+                        <Menu.Item><a href='/test/b3'>7단계</a></Menu.Item>
+                        <Menu.Item><a href='/test/b4'>8단계</a></Menu.Item>
+                        <Menu.Item><a href='/test/c1'>9단계</a></Menu.Item>
+                        <Menu.Item><a href='/test/c2'>10단계</a></Menu.Item>
+                        <Menu.Item><a href='/test/c3'>11단계</a></Menu.Item>
+                        <Menu.Item><a href='/test/c4'>12단계</a></Menu.Item>
                     </SubMenu>
                 </Menu>
             ,
@@ -105,13 +107,14 @@ function LandingPage(props) {
             key: '3',
             second:
                 <Menu mode='horizontal'>
+                    {/* D, E */}
                     <SubMenu title={<span>13~18 단계</span>}>
-                        <Menu.Item>13단계</Menu.Item>
-                        <Menu.Item>14단계</Menu.Item>
-                        <Menu.Item>15단계</Menu.Item>
-                        <Menu.Item>16단계</Menu.Item>
-                        <Menu.Item>17단계</Menu.Item>
-                        <Menu.Item>18단계</Menu.Item>
+                        <Menu.Item><a href='/test/d1'>13단계</a></Menu.Item>
+                        <Menu.Item><a href='/test/d2'>14단계</a></Menu.Item>
+                        <Menu.Item><a href='/test/d3'>15단계</a></Menu.Item>
+                        <Menu.Item><a href='/test/d4'>16단계</a></Menu.Item>
+                        <Menu.Item><a href='/test/e1'>17단계</a></Menu.Item>
+                        <Menu.Item><a href='/test/e2'>18단계</a></Menu.Item>
                     </SubMenu>
                 </Menu>
             ,
@@ -133,12 +136,13 @@ function LandingPage(props) {
             key: '4',
             second:
                 <Menu mode='horizontal'>
+                    {/* E, F */}
                     <SubMenu title={<span>19~24 단계</span>}>
-                        <Menu.Item>19단계</Menu.Item>
-                        <Menu.Item>20단계</Menu.Item>
-                        <Menu.Item>21단계</Menu.Item>
-                        <Menu.Item>22단계</Menu.Item>
-                        <Menu.Item>23단계</Menu.Item>
+                        <Menu.Item><a href='/test/e3'>19단계</a></Menu.Item>
+                        <Menu.Item><a href='/test/e4'>20단계</a></Menu.Item>
+                        <Menu.Item><a href='/test/f1'>21단계</a></Menu.Item>
+                        <Menu.Item><a href='/test/f2'>22단계</a></Menu.Item>
+                        <Menu.Item><a href='/test/f3'>23단계</a></Menu.Item>
                         <Menu.Item>24단계</Menu.Item>
                     </SubMenu>
                 </Menu>

@@ -1,0 +1,85 @@
+{
+  "_from": "react-quiz-component",
+  "_id": "react-quiz-component@0.3.4",
+  "_inBundle": false,
+  "_integrity": "sha512-OtVoZkasAN6uHvaokX74i/CJm0Rx8QlWDTrrR5kXSoHkFUlq/sUbK/Sy/xwAjUvOKHWEYcQDktQlathGl/E+1A==",
+  "_location": "/react-quiz-component",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "react-quiz-component",
+    "name": "react-quiz-component",
+    "escapedName": "react-quiz-component",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-quiz-component/-/react-quiz-component-0.3.4.tgz",
+  "_shasum": "22e532849c9b67af10cca65c2b3fc6dd46c92a0f",
+  "_spec": "react-quiz-component",
+  "_where": "C:\\Users\\Owner\\Documents\\youtube-clone",
+  "author": {
+    "name": "WONG, Wing Kam",
+    "email": "wingkwong.code@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/wingkwong/react-quiz-component/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "dompurify": "^2.0.8",
+    "marked": "^0.7.0"
+  },
+  "deprecated": false,
+  "description": "React Quiz Component",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "concurrently": "^3.5.1",
+    "css-loader": "^3.4.2",
+    "html-webpack-plugin": "^3.2.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.13.0",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "homepage": "https://github.com/wingkwong/react-quiz-component",
+  "keywords": [
+    "react",
+    "reactjs",
+    "react-quiz-component",
+    "react-quiz",
+    "quiz"
+  ],
+  "license": "MIT",
+  "main": "lib/Quiz.js",
+  "name": "react-quiz-component",
+  "peerDependencies": {
+    "react": "^15.3.0 || ^16.2.0",
+    "react-dom": "^15.3.0 || ^16.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wingkwong/react-quiz-component.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run lib:watch\" \"npm run docs\"",
+    "docs": "webpack-dev-server --mode development",
+    "docs:prod": "webpack --mode production",
+    "lib": "babel src/lib -d lib --copy-files",
+    "lib:watch": "babel src/lib -w -d lib --copy-files"
+  },
+  "version": "0.3.4"
+}

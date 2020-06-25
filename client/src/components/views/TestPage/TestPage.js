@@ -24,6 +24,7 @@ function TestPage() {
                 "_id": test._id,
                 "question": test.question,
                 "questionType": "text",
+                "questionPic": test.pic !== undefined ? 'http://localhost:5000/' + test.pic : undefined,
                 "answerSelectionType": test.answer.indexOf(',')>=0 ? "multiple" : "single",
                 "answers": test.mark4 !== undefined ?
                 [
@@ -45,7 +46,8 @@ function TestPage() {
                 "totalCount": test.totalcnt != null ? test.totalcnt : 0
             }
             return quiz
-        })
+        }),
+        "testid": Test.map(test => test.testid).splice(0,1).toString()
     }
     
     console.log(quizData)
