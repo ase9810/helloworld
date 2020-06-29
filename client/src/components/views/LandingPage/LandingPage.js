@@ -143,7 +143,7 @@ function LandingPage(props) {
                         <Menu.Item><a href='/test/f1'>21단계</a></Menu.Item>
                         <Menu.Item><a href='/test/f2'>22단계</a></Menu.Item>
                         <Menu.Item><a href='/test/f3'>23단계</a></Menu.Item>
-                        <Menu.Item>24단계</Menu.Item>
+                        <Menu.Item><a href='/test/f4'>24단계</a></Menu.Item>
                     </SubMenu>
                 </Menu>
             ,
