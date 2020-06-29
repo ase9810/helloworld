@@ -33,8 +33,8 @@ function App() {
           <Route exact path="/subscription" component={Auth(SubscriptionPage, null)} />
           <Route exact path="/problem" component={Auth(ProblemPage, null)} />
           <Route exact path="/problem/:testid" component={Auth(ProblemPage, null)} />
-          <Route exact path="/test" component={Auth(TestPage, null)} />
-          <Route exact path="/test/:testid" component={Auth(TestPage, null)} />
+          <Route exact path="/test" component={Auth(TestPage, true)} />
+          <Route exact path="/test/:testid" component={Auth(TestPage, true)} />
         </Switch>
       </div>
       <Footer />

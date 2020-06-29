@@ -1,11 +1,11 @@
 import React from 'react';
-import { Table, Menu } from 'antd';
+import { Table, Menu, Dropdown } from 'antd';
 import logo from './Mtest.png';
 import "./LandingPage.css";
+import { Link } from 'react-router-dom';
+import { DownOutlined } from '@ant-design/icons';
 
-const SubMenu = Menu.SubMenu;
-
-function LandingPage(props) {
+function LandingPage() {
 
     const renderContent = (value, row, index) => {
         const obj = {
@@ -14,6 +14,7 @@ function LandingPage(props) {
         };
         return obj;
     };
+
 
     const columns = [
         {
@@ -47,162 +48,192 @@ function LandingPage(props) {
             key: '1',
             first: '초등 A',
             second:
-                <Menu mode='horizontal'>
-                    {/* A, B */}
-                    <SubMenu title={<span>1~6 단계</span>}>
-                        <Menu.Item><a href='/test/a1'>1단계</a></Menu.Item>
-                        <Menu.Item><a href='/test/a2'>2단계</a></Menu.Item>
-                        <Menu.Item><a href='/test/a3'>3단계</a></Menu.Item>
-                        <Menu.Item><a href='/test/a4'>4단계</a></Menu.Item>
-                        <Menu.Item><a href='/test/b1'>5단계</a></Menu.Item>
-                        <Menu.Item><a href='/test/b2'>6단계</a></Menu.Item>
-                    </SubMenu>
-                </Menu>
-            ,
+                <Dropdown overlay={
+                    <Menu>
+                        <Menu.Item><Link to='/test/a1'>1단계</Link></Menu.Item><Menu.Divider />
+                        <Menu.Item><Link to='/test/a2'>2단계</Link></Menu.Item><Menu.Divider />
+                        <Menu.Item><Link to='/test/a3'>3단계</Link></Menu.Item><Menu.Divider />
+                        <Menu.Item><Link to='/test/a4'>4단계</Link></Menu.Item><Menu.Divider />
+                        <Menu.Item><Link to='/test/b1'>5단계</Link></Menu.Item><Menu.Divider />
+                        <Menu.Item><Link to='/test/b2'>6단계</Link></Menu.Item>
+                    </Menu>
+                } trigger={['click']}>
+                    <a className="ant-dropdown-link" onClick={e => e.preventDefault()} href="#/">
+                        1~6단계 <DownOutlined />
+                    </a>
+                </Dropdown>,
             third:
-                <Menu mode='horizontal'>
-                    <SubMenu title={<span>1~6 단계</span>}>
-                        <Menu.Item>1단계</Menu.Item>
-                        <Menu.Item>2단계</Menu.Item>
-                        <Menu.Item>3단계</Menu.Item>
-                        <Menu.Item>4단계</Menu.Item>
-                        <Menu.Item>5단계</Menu.Item>
+                <Dropdown overlay={
+                    <Menu>
+                        <Menu.Item>1단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>2단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>3단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>4단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>5단계</Menu.Item><Menu.Divider />
                         <Menu.Item>6단계</Menu.Item>
-                    </SubMenu>
-                </Menu>
-            ,
+                    </Menu>
+                } trigger={['click']}>
+                    <a className="ant-dropdown-link" onClick={e => e.preventDefault()} href="#/">
+                        1~6단계 <DownOutlined />
+                    </a>
+                </Dropdown>,
             fourth: '초등 하'
         },
         {
             key: '2',
             first: '초등 B',
             second:
-                <Menu mode='horizontal'>
-                    {/* B, C */}
-                    <SubMenu title={<span>7~12 단계</span>}>
-                        <Menu.Item><a href='/test/b3'>7단계</a></Menu.Item>
-                        <Menu.Item><a href='/test/b4'>8단계</a></Menu.Item>
-                        <Menu.Item><a href='/test/c1'>9단계</a></Menu.Item>
-                        <Menu.Item><a href='/test/c2'>10단계</a></Menu.Item>
-                        <Menu.Item><a href='/test/c3'>11단계</a></Menu.Item>
-                        <Menu.Item><a href='/test/c4'>12단계</a></Menu.Item>
-                    </SubMenu>
-                </Menu>
+                <Dropdown overlay={
+                    <Menu>
+                        <Menu.Item><Link to='/test/b3'>7단계</Link></Menu.Item><Menu.Divider />
+                        <Menu.Item><Link to='/test/b4'>8단계</Link></Menu.Item><Menu.Divider />
+                        <Menu.Item><Link to='/test/c1'>9단계</Link></Menu.Item><Menu.Divider />
+                        <Menu.Item><Link to='/test/c2'>10단계</Link></Menu.Item><Menu.Divider />
+                        <Menu.Item><Link to='/test/c3'>11단계</Link></Menu.Item><Menu.Divider />
+                        <Menu.Item><Link to='/test/c4'>12단계</Link></Menu.Item>
+                    </Menu>
+                } trigger={['click']}>
+                    <a className="ant-dropdown-link" onClick={e => e.preventDefault()} href="#/">
+                        7~12단계 <DownOutlined />
+                    </a>
+                </Dropdown>
             ,
             third:
-                <Menu mode='horizontal'>
-                    <SubMenu title={<span>7~12 단계</span>}>
-                        <Menu.Item>7단계</Menu.Item>
-                        <Menu.Item>8단계</Menu.Item>
-                        <Menu.Item>9단계</Menu.Item>
-                        <Menu.Item>10단계</Menu.Item>
-                        <Menu.Item>11단계</Menu.Item>
+                <Dropdown overlay={
+                    <Menu>
+                        <Menu.Item>7단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>8단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>9단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>10단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>11단계</Menu.Item><Menu.Divider />
                         <Menu.Item>12단계</Menu.Item>
-                    </SubMenu>
-                </Menu>
-            ,
+                    </Menu>
+                } trigger={['click']}>
+                    <a className="ant-dropdown-link" onClick={e => e.preventDefault()} href="#/">
+                        7~12단계 <DownOutlined />
+                    </a>
+                </Dropdown>,
             fourth: '초등 중'
         },
         {
             key: '3',
             second:
-                <Menu mode='horizontal'>
-                    {/* D, E */}
-                    <SubMenu title={<span>13~18 단계</span>}>
-                        <Menu.Item><a href='/test/d1'>13단계</a></Menu.Item>
-                        <Menu.Item><a href='/test/d2'>14단계</a></Menu.Item>
-                        <Menu.Item><a href='/test/d3'>15단계</a></Menu.Item>
-                        <Menu.Item><a href='/test/d4'>16단계</a></Menu.Item>
-                        <Menu.Item><a href='/test/e1'>17단계</a></Menu.Item>
-                        <Menu.Item><a href='/test/e2'>18단계</a></Menu.Item>
-                    </SubMenu>
-                </Menu>
-            ,
+                <Dropdown overlay={
+                    <Menu>
+                        <Menu.Item><Link to='/test/d1'>13단계</Link></Menu.Item><Menu.Divider />
+                        <Menu.Item><Link to='/test/d2'>14단계</Link></Menu.Item><Menu.Divider />
+                        <Menu.Item><Link to='/test/d3'>15단계</Link></Menu.Item><Menu.Divider />
+                        <Menu.Item><Link to='/test/d4'>16단계</Link></Menu.Item><Menu.Divider />
+                        <Menu.Item><Link to='/test/e1'>17단계</Link></Menu.Item><Menu.Divider />
+                        <Menu.Item><Link to='/test/e2'>18단계</Link></Menu.Item>
+                    </Menu>
+                } trigger={['click']}>
+                    <a className="ant-dropdown-link" onClick={e => e.preventDefault()} href="#/">
+                        13~18단계 <DownOutlined />
+                    </a>
+                </Dropdown>,
             third:
-                <Menu mode='horizontal'>
-                    <SubMenu title={<span>13~18 단계</span>}>
-                        <Menu.Item>13단계</Menu.Item>
-                        <Menu.Item>14단계</Menu.Item>
-                        <Menu.Item>15단계</Menu.Item>
-                        <Menu.Item>16단계</Menu.Item>
-                        <Menu.Item>17단계</Menu.Item>
+                <Dropdown overlay={
+                    <Menu>
+                        <Menu.Item>13단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>14단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>15단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>16단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>17단계</Menu.Item><Menu.Divider />
                         <Menu.Item>18단계</Menu.Item>
-                    </SubMenu>
-                </Menu>
-            ,
+                    </Menu>
+                } trigger={['click']}>
+                    <a className="ant-dropdown-link" onClick={e => e.preventDefault()} href="#/">
+                        13~18단계 <DownOutlined />
+                    </a>
+                </Dropdown>,
             fourth: '초등 상'
         },
         {
             key: '4',
             second:
-                <Menu mode='horizontal'>
-                    {/* E, F */}
-                    <SubMenu title={<span>19~24 단계</span>}>
-                        <Menu.Item><a href='/test/e3'>19단계</a></Menu.Item>
-                        <Menu.Item><a href='/test/e4'>20단계</a></Menu.Item>
-                        <Menu.Item><a href='/test/f1'>21단계</a></Menu.Item>
-                        <Menu.Item><a href='/test/f2'>22단계</a></Menu.Item>
-                        <Menu.Item><a href='/test/f3'>23단계</a></Menu.Item>
-                        <Menu.Item>24단계</Menu.Item>
-                    </SubMenu>
-                </Menu>
-            ,
+                <Dropdown overlay={
+                    <Menu>
+                        <Menu.Item><Link to='/test/e3'>19단계</Link></Menu.Item><Menu.Divider />
+                        <Menu.Item><Link to='/test/e4'>20단계</Link></Menu.Item><Menu.Divider />
+                        <Menu.Item><Link to='/test/f1'>21단계</Link></Menu.Item><Menu.Divider />
+                        <Menu.Item><Link to='/test/f2'>22단계</Link></Menu.Item><Menu.Divider />
+                        <Menu.Item><Link to='/test/f3'>23단계</Link></Menu.Item><Menu.Divider />
+                        <Menu.Item><Link to='/test/f4'>24단계</Link></Menu.Item>
+                    </Menu>
+                } trigger={['click']}>
+                    <a className="ant-dropdown-link" onClick={e => e.preventDefault()} href="#/">
+                        19~24단계 <DownOutlined />
+                    </a>
+                </Dropdown>,
             third:
-                <Menu mode='horizontal'>
-                    <SubMenu title={<span>19~24 단계</span>}>
-                        <Menu.Item>19단계</Menu.Item>
-                        <Menu.Item>20단계</Menu.Item>
-                        <Menu.Item>21단계</Menu.Item>
-                        <Menu.Item>22단계</Menu.Item>
-                        <Menu.Item>23단계</Menu.Item>
+                <Dropdown overlay={
+                    <Menu>
+                        <Menu.Item>19단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>20단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>21단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>22단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>23단계</Menu.Item><Menu.Divider />
                         <Menu.Item>24단계</Menu.Item>
-                    </SubMenu>
-                </Menu>
-            ,
+                    </Menu>
+                } trigger={['click']}>
+                    <a className="ant-dropdown-link" onClick={e => e.preventDefault()} href="#/">
+                        19~24단계 <DownOutlined />
+                    </a>
+                </Dropdown>,
             fourth: '중등 1'
         },
         {
             key: '5',
             second:
-                <Menu mode='horizontal'>
-                    <SubMenu title={<span>25~30 단계</span>}>
-                        <Menu.Item>25단계</Menu.Item>
-                        <Menu.Item>26단계</Menu.Item>
-                        <Menu.Item>27단계</Menu.Item>
-                        <Menu.Item>28단계</Menu.Item>
-                        <Menu.Item>29단계</Menu.Item>
+                <Dropdown overlay={
+                    <Menu>
+                        <Menu.Item>25단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>26단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>27단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>28단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>29단계</Menu.Item><Menu.Divider />
                         <Menu.Item>30단계</Menu.Item>
-                    </SubMenu>
-                </Menu>
-            ,
+                    </Menu>
+                } trigger={['click']}>
+                    <a className="ant-dropdown-link" onClick={e => e.preventDefault()} href="#/">
+                        25~30단계 <DownOutlined />
+                    </a>
+                </Dropdown>,
             third:
-                <Menu mode='horizontal'>
-                    <SubMenu title={<span>25~30 단계</span>}>
-                        <Menu.Item>25단계</Menu.Item>
-                        <Menu.Item>26단계</Menu.Item>
-                        <Menu.Item>27단계</Menu.Item>
-                        <Menu.Item>28단계</Menu.Item>
-                        <Menu.Item>29단계</Menu.Item>
+                <Dropdown overlay={
+                    <Menu>
+                        <Menu.Item>25단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>26단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>27단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>28단계</Menu.Item><Menu.Divider />
+                        <Menu.Item>29단계</Menu.Item><Menu.Divider />
                         <Menu.Item>30단계</Menu.Item>
-                    </SubMenu>
-                </Menu>
-            ,
+                    </Menu>
+                } trigger={['click']}>
+                    <a className="ant-dropdown-link" onClick={e => e.preventDefault()} href="#/">
+                        25~30단계 <DownOutlined />
+                    </a>
+                </Dropdown>,
             fourth: '중등 2'
         },
         {
             key: '6',
             third:
-                <Menu mode='horizontal'>
-                    <SubMenu title={<span>31~36 단계</span>}>
-                        <Menu.Item>31단계</Menu.Item>
-                        <Menu.Item>32단계</Menu.Item>
-                        <Menu.Item>33단계</Menu.Item>
-                        <Menu.Item>34단계</Menu.Item>
-                        <Menu.Item>35단계</Menu.Item>
-                        <Menu.Item>36단계</Menu.Item>
-                    </SubMenu>
-                </Menu>
-            ,
+                <Dropdown overlay={
+                    <Menu>
+                        <Menu.Item key="0">31단계</Menu.Item><Menu.Divider />
+                        <Menu.Item key="1">32단계</Menu.Item><Menu.Divider />
+                        <Menu.Item key="2">33단계</Menu.Item><Menu.Divider />
+                        <Menu.Item key="3">34단계</Menu.Item><Menu.Divider />
+                        <Menu.Item key="4">35단계</Menu.Item><Menu.Divider />
+                        <Menu.Item key="5">36단계</Menu.Item>
+                    </Menu>
+                } trigger={['click']}>
+                    <a className="ant-dropdown-link" onClick={e => e.preventDefault()} href="#/">
+                        31~36단계 <DownOutlined />
+                    </a>
+                </Dropdown>,
             fourth: '중등 3'
         },
     ];
@@ -231,6 +262,7 @@ function LandingPage(props) {
                 }}
             />
         </div>
+
     )
 }
 

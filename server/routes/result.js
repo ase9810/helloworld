@@ -4,10 +4,26 @@ const { Result } = require("../models/Result");
 
 const { auth } = require("../middleware/auth");
 
-
 //=================================
 //             Result
 //=================================
+
+router.post('/update', (req, res) => {
+    Result.update({ $and: [{ testid: req.body.testid }, { tester: req.body.tester }] },
+        { $set: { correctPoint: req.body.correctPoint } },
+        { upsert: true, },
+        function (err, doc) {
+            if (err) {
+                console.log('b')
+                return res.send(500, { error: err });
+            }
+            console.log('a')
+            console.log(req.body)
+            return res.status(200).json({
+                success: true
+            })
+        });
+});
 
 router.post('/uploadResult', (req, res) => {
     // 시험결과를 서버에 저장한다.
@@ -21,12 +37,12 @@ router.post('/uploadResult', (req, res) => {
     });
 })
 
-router.get('/getResult', function (req, res) {
+router.post('/getResult', (req, res) => {
     const value = req.headers.referer.toString()
-    const testid = value.substring(27, 29)
+    const testid = value.substring(value.length-2, value.length)
 
     // 문제를 DB에서 가져와서 클라이언트에 보낸다.
-    Result.find({$and: [{tester:req.body.tester},{testid: testid}] })
+    Result.find({ $and: [{ tester: req.body.tester }, { testid: testid }] })
         .then((result) => {
             if (result.length != 0) {
                 res.status(200).json({
@@ -34,7 +50,6 @@ router.get('/getResult', function (req, res) {
                     result
                 })
             } else {
-                console.log(value)
                 res.status(200).json({
                     success: false
                 })

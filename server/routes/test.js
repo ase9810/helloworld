@@ -38,18 +38,20 @@ router.post("/saveTest", (req, res) => {
 
 router.get('/getTest', function (req, res) {
     const value = req.headers.referer.toString()
-    const testid = value.substring(27, 29)
+    const testid = value.substring(value.length-2, value.length)
 
     // 문제를 DB에서 가져와서 클라이언트에 보낸다.
     Test.find({ testid: testid })
         .then((test) => {
             if (test.length != 0) {
+                console.log('a')
                 res.status(200).json({
                     success: true,
                     test
                 })
             } else {
-                console.log(value)
+                console.log('b')
+                console.log(testid)
                 res.status(200).json({
                     success: false
                 })
