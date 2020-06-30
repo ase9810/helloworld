@@ -31,7 +31,7 @@ function TestPage(props) {
                 if (response.data.success) {
                     setResult(response.data.result);
                 } else {
-                    alert('결과 정보를 가져오기를 실패했습니다.')
+                    // alert('결과 정보를 가져오기를 실패했습니다.')
                 }
             })            
         }
@@ -49,7 +49,7 @@ function TestPage(props) {
                     "_id": test._id,
                     "question": test.question,
                     "questionType": "text",
-                    "questionPic": test.pic !== undefined ? 'http://localhost:5000/' + test.pic : undefined,
+                    "questionPic": test.pic !== undefined ? 'http://192.168.0.91:5000/' + test.pic : undefined,
                     "answerSelectionType": test.answer.indexOf(',') >= 0 ? "multiple" : "single",
                     "answers": test.mark4 !== undefined ?
                         [
@@ -78,6 +78,8 @@ function TestPage(props) {
             "userid": user.userData._id
         }
     
+        console.log(quizData)
+
         return (
             <MathJax.Context
                 input='ascii'
@@ -98,7 +100,7 @@ function TestPage(props) {
                 }}
             >
                 <div>
-                    <Quiz quiz={quizData} shuffle={true} lastCheck={true} />
+                    <Quiz quiz={quizData} shuffle={true} shuffleAnswer={true} lastCheck={true} />
                 </div >
             </MathJax.Context>
         )
