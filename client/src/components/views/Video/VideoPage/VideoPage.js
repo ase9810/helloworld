@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Avatar, Col, Typography, Row } from 'antd';
+import { Card, Col, Typography, Row } from 'antd';
 import moment from 'moment';
 import Axios from 'axios';
 
@@ -38,13 +38,9 @@ function VideoPage(props) {
                 </a>
                 <br />
                 <Meta
-                    avatar={
-                        <Avatar src={video.writer.image} />
-                    }
                     title={video.title}
                     description=""
                 />
-                <span>{video.writer.name}</span><br />
                 <span style={{ marginLeft: '3rem' }}>{video.views} views</span> - <span>{moment(video.createdAt).format("MMM Do YY")}</span>
             </Col>
         )
