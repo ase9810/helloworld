@@ -52,7 +52,7 @@
     "react-dropzone": "^11.0.1",
     "react-emotion": "^10.0.0",
     "react-mathjax2": "0.0.2",
-    "react-native": "^0.62.2",
+    "react-native": "^0.62.3",
     "react-pdf": "^4.1.0",
     "react-quiz-component": "^0.3.4",
     "react-redux": "^5.1.2",
